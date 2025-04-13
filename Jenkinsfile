@@ -1,11 +1,10 @@
 pipeline {
     agent any
-
     stages {
         stage('Clone Repo') {
             steps {
                 sshagent(['github-ssh-key']) {
-                    git url: 'git@github.com:your-username/your-repo.git', branch: 'main'
+                    git branch: 'main', credentialsId: 'github-ssh-key', url: 'git@github.com:chinedunewbirth/jenkins-github-aws-auth.git'
                 }
             }
         }
